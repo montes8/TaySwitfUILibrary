@@ -7,7 +7,7 @@
 
 import LocalAuthentication
 
-public class CMBiometric{
+public class UIBiometric{
     
     let context = LAContext()
     var errorNeo: NSError? = nil
@@ -21,16 +21,16 @@ public class CMBiometric{
         return context.biometryType
     }
     
-    public func evaluateBiometryType() -> CMTypeBiometric{
+    public func evaluateBiometryType() -> UITypeBiometric{
         switch self.neoBiometryType {
         case .faceID:
-            return CMTypeBiometric.faceId
+            return UITypeBiometric.faceId
         case .touchID:
-            return CMTypeBiometric.touchID
+            return UITypeBiometric.touchID
         case .none:
-            return CMTypeBiometric.notConfiguration
+            return UITypeBiometric.notConfiguration
         default:
-            return CMTypeBiometric.none
+            return UITypeBiometric.none
         }
     }
     
@@ -51,16 +51,16 @@ public class CMBiometric{
         return  evaluateBiometryType() == .faceId
     }
     
-    public func validBiometricEnable(value : CMTypeBiometric)->Bool{
-        return value == CMTypeBiometric.faceId || value == CMTypeBiometric.touchID
+    public func validBiometricEnable(value : UITypeBiometric)->Bool{
+        return value == UITypeBiometric.faceId || value == UITypeBiometric.touchID
     }
     
     
-    public func validHadwareBiometric(value : CMTypeBiometric)->Bool{
-        return value != CMTypeBiometric.none
+    public func validHadwareBiometric(value : UITypeBiometric)->Bool{
+        return value != UITypeBiometric.none
     }
     
-    public func showBiometricLogin(title : String = messagePermissionBiometric,completion: @escaping @MainActor @Sendable(CMValidateBiometric) -> Void) {
+    public func showBiometricLogin(title : String = messagePermissionBiometric,completion: @escaping @MainActor @Sendable(UIValidateBiometric) -> Void) {
         
             guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &self.errorNeo) else {
                     Task { @MainActor in completion(.error) }
@@ -149,14 +149,14 @@ public class CMBiometric{
 }
 
 
-public enum CMTypeBiometric:Codable {
+public enum UITypeBiometric:Codable {
     case touchID
     case faceId
     case notConfiguration
     case none
 }
 
-public enum CMValidateBiometric:Codable,Sendable {
+public enum UIValidateBiometric:Codable,Sendable {
     case error
     case success
     case change
