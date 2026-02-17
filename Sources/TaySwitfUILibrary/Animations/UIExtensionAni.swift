@@ -23,7 +23,7 @@ public extension View {
             .offset(x: isRevealed ? x : y)
     }
     
-    func aniTransitionBottomToTop(colorCtn : Color = Color.cmBlue1300) -> some View {
+    func aniTransitionBottomToTop(colorCtn : Color = Color.uiBlack) -> some View {
         self.modifier(TransitionBottomToTop(colorCtn: colorCtn))
     }
     
@@ -40,7 +40,7 @@ public extension View {
 
 struct TransitionBottomToTop: ViewModifier {
     @State private var internalRevealed: Bool = false
-    var colorCtn : Color = Color.cmBlue1300
+    var colorCtn : Color = Color.uiBlack
     func body(content: Content) -> some View {
         ZStack {
             colorCtn

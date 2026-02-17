@@ -7,8 +7,10 @@
 
 public struct IniTaySwitUI:Sendable{
     public static let shared = IniTaySwitUI()
-    
+    nonisolated(unsafe) public static var styleButton: BtnConfig = BtnConfig()
+    nonisolated(unsafe) public static var styleDialog: DialogConfig = DialogConfig()
     nonisolated(unsafe) public static var namePackageApp: String = uiEmpty
+    nonisolated(unsafe) public static var typeMovilSmall: Bool = false
 
     
     public init() {}
