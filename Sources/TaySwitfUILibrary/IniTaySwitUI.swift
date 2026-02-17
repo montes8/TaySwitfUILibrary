@@ -7,6 +7,11 @@
 
 public struct IniTaySwitUI:Sendable{
     public static let shared = IniTaySwitUI()
+    nonisolated(unsafe) public static var styleKeyboardCode: KeyBoardConfig = KeyBoardConfig()
+    nonisolated(unsafe) public static var styleDropdown: DropdownConfig = DropdownConfig()
+    nonisolated(unsafe) public static var styleDropdownSmall: DropSmallModel = DropSmallModel()
+    nonisolated(unsafe) public static var styleEdit: EditConfig = EditConfig()
+    nonisolated(unsafe) public static var styleNavBarConfig: UINavBarConfig = UINavBarConfig()
     nonisolated(unsafe) public static var styleButton: BtnConfig = BtnConfig()
     nonisolated(unsafe) public static var styleDialog: DialogConfig = DialogConfig()
     nonisolated(unsafe) public static var namePackageApp: String = uiEmpty

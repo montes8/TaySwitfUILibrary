@@ -207,6 +207,13 @@ public extension View{
             self
         }
     }
+    
+    func cmNavigate<Destination: View>(
+            to destination: @escaping () -> Destination,
+            when isActive: Binding<Bool>
+        ) -> some View {
+            self.navigationDestination(isPresented: isActive, destination: destination)
+        }
 }
 
 
